@@ -10,23 +10,11 @@ import { ProductRepository } from "./repository.model";
 
 export class ProductComponent {
     model: ProductRepository = new ProductRepository();
+    email = "busra@gmail.com";
 
-     // keyUp metodu kullanıcının klavyeden bir tuşa basmasıyla çalışır.
-     onKeyUp($event: any){
-         if($event.keycode === 13){
-            console.log("enter was pressed");
-         }
+
+     // component üzerinden html sayfasına bir veri aktarımı yapmak istiyoruz.
+     onKeyUp(){
+        console.log(this.email);
      }
-     // enter olup olmadığını kontrole gerek kalmadı [keyup.enter ile yaptık]
-     onKeyUpp(){
-        console.log("enter was pressed");
-     }
-     // inputun value deperini almak için 
-     getOnKeyUpValue($event: any){
-         console.log($event.target.value);
-     }
-     // id bilgisi girilen input
-     getOnKeyUpValueId(email: string){
-        console.log(email);
     }
-}
