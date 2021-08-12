@@ -1,3 +1,12 @@
 <div class="bg-primary text-white m-2 p-2">
     there are {{ model.getProducts().length }} products in the repository
 </div>
+<!--interpolation yöntemiyle veri gösterme-->
+<h2> {{product.name}} </h2>
+<!-- property bindig (one way bindin) kullanarak veri gösterme-->
+<h2 [textContent]="product.name"></h2>
+
+<!--interpolatin kullanarak-->
+<img src="assets/img/{{ product.imageUrl }}">
+<!--property binding (one way binding) kullanarak -->
+<img [src] = "'assets/img/'+ product.imageUrl ">

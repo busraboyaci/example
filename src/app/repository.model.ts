@@ -1,10 +1,11 @@
+import { observable } from "rxjs";
 import { SimpleDataSource } from "./datasource.model";
 import { Product } from "./product.model";
 
 export class ProductRepository{
     private datasource: SimpleDataSource = new SimpleDataSource;
     private products: Product[] = [];
-
+    
     // constructor içerisine yukarıdaki elemanları dolduruyoruz
     constructor(){
         this.datasource = new SimpleDataSource();
@@ -17,7 +18,7 @@ export class ProductRepository{
         return this.products;
     }
 // hata yüzünden | undefined eklentisini yaptım
-    getProductsById(id: number): Product | undefined{
+    getProductById(id: number): Product | any{
         return this.products.find(p => p.id == id);
     }
 }
