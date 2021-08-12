@@ -9,12 +9,13 @@ import { ProductRepository } from "./repository.model";
 })
 
 export class ProductComponent {
-    model: ProductRepository = new ProductRepository();
-    email = "busra@gmail.com";
+// pipes olarak kullandığımız değişkenler
+    today: number = Date.now();
+    title: string = "Angular Kursu";
+    students: number  = 21536;
+    price: number = 395.9954;
+    completed: number = 0.26;
 
 
-     // component üzerinden html sayfasına bir veri aktarımı yapmak istiyoruz.
-     onKeyUp(){
-        console.log(this.email);
-     }
+
     }
