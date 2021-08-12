@@ -11,34 +11,22 @@ import { ProductRepository } from "./repository.model";
 export class ProductComponent {
     model: ProductRepository = new ProductRepository();
 
-     // disable eğer true ise var olan clasın üzerine disable clası eklendi
-    disabled = true;
-
-    getClasses(id: number): string{
-        let product = this.model.getProductById(id);
-        return (product.price <= 1000 ? "bg-info": "bg-secondary")+ " m-2 p-2";
+     // keyUp metodu kullanıcının klavyeden bir tuşa basmasıyla çalışır.
+     onKeyUp($event: any){
+         if($event.keycode === 13){
+            console.log("enter was pressed");
+         }
+     }
+     // enter olup olmadığını kontrole gerek kalmadı [keyup.enter ile yaptık]
+     onKeyUpp(){
+        console.log("enter was pressed");
+     }
+     // inputun value deperini almak için 
+     getOnKeyUpValue($event: any){
+         console.log($event.target.value);
+     }
+     // id bilgisi girilen input
+     getOnKeyUpValueId(email: string){
+        console.log(email);
     }
-
-    getClassMap(id: number): Object{
-        let product = this.model.getProductById(id);
-        return {
-            "bg-info": product.price <=1000,
-            "bg-secondary": product.price >1000,
-            "text-center text-white": product.name == "samsung S6"
-        }
-    }
-
-    color: string = "red";
-    fontSize: string = "25px";
-
-    getStyle(id: number): object {
-        // ürün bilgisini alıyoruz
-        let product = this.model.getProductById(id);
-        // geriye obje dönduruyoruz
-        return {
-            fontSize: "25px",
-            color: product.price <=1000? "green":"red"
-        }
-    }
-
 }
