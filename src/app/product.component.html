@@ -13,10 +13,19 @@
 <button class="btn btn-primary" [class.disabled]="disabled">Submit</button>
 
 <!-- var olan claslara dokunmadan getirmek istediğim clasları da getirebildiğim uygulama-->
-<div class="m-2 p-2" [ngClass]="getClassMap(1)">
-    katalogdaki ilk ürün {{ model.getProductById(1).name}}
-</div>
 
+<!-- style değerinin tek tek verilebildiği durumun örnekleri-->
+<div class="m-2 p-2" [ngClass]="getClassMap(1)">
+    katalogdaki <span [style.color]="color">ilk ürün</span>  {{ model.getProductById(1).name}}
+</div>
 <div class="m-2 p-2" [ngClass]="getClassMap(2)">
-    katalogdaki ikinci ürün {{ model.getProductById(2).name}}
+    katalogdaki <span [style.fontSize]="fontSize">ikinci ürün</span>  {{ model.getProductById(2).name}}
+   </div>
+
+<!-- birden fazla style değeri verilebilen durumun örneği-->
+<div class="m-2 p-2" [ngClass]="getClassMap(1)">
+    katalogdaki <span [ngStyle]="getStyle(1)">ilk ürün</span>  {{ model.getProductById(1).name}}
+</div>
+<div class="m-2 p-2" [ngClass]="getClassMap(2)">
+    katalogdaki <span [ngStyle]="getStyle(2)">ikinci ürün</span>  {{ model.getProductById(2).name}}
    </div>

@@ -28,4 +28,17 @@ export class ProductComponent {
         }
     }
 
+    color: string = "red";
+    fontSize: string = "25px";
+
+    getStyle(id: number): object {
+        // ürün bilgisini alıyoruz
+        let product = this.model.getProductById(id);
+        // geriye obje dönduruyoruz
+        return {
+            fontSize: "25px",
+            color: product.price <=1000? "green":"red"
+        }
+    }
+
 }
