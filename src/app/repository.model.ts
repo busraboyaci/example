@@ -17,7 +17,11 @@ export class ProductRepository{
         return this.products;
     }
 // hata yüzünden | undefined eklentisini yaptım
-    getProductsById(id: number): Product | undefined{
+    getProductsById(id: number): Product | any{
         return this.products.find(p => p.id == id);
+    }
+// Ürün sayısını getirdik
+    getProductCount(): number{
+       return this.products.length;
     }
 }

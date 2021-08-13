@@ -1,37 +1,15 @@
-<!-- Ürün olduğunda veya olmadığında hangi kod satırının çalışacağını
-ngIf - ngTemplate - hidden kullanarak gösterdik.-->
-
-<div *ngIf="model.getProducts().length>0; then productList else noProducts " class="bg-primary text-white m-2 p-2">
-    <!--there are {{ model.getProducts().length }} products in the repository-->
+<!-- Ng Switch ile koşul kullanımı -->
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductCount()">
+    <span *ngSwitchCase="0">there are no products</span> 
+    <span *ngSwitchCase="1">there are 1 products</span> 
+    <span *ngSwitchCase="2">there are 2 products</span> 
+    <span *ngSwitchDefault>there are many products</span> 
 </div>
 
-<div *ngIf="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
-    <!--there are no products in the repository-->
+<!-- String bir değer ile kullanımı -->
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductsById(1).name">
+    <span *ngSwitchCase="productName">samsung S5</span> 
+    <span *ngSwitchCase="'samsung s6'">Samsung S6</span> 
+    <span *ngSwitchCase="'Samsung S7'">Samsung S7</span> 
+    <span *ngSwitchDefault>other products</span> 
 </div>
-
-<!-- ng-Template bir ngIf direktifini birden çok yerde kullanmak isteğimizde else yapısıyla
-kullanabiliriz. Class özellikleri aktarılmadığı için ng tamplate içine 
-class özelliklerini ekliyoruz-->
-<ng-template #productList>
-    <div class="bg-primary text-white m-2 p-2">
-        there are {{ model.getProducts().length }} products in the repository
-    </div>
-</ng-template>
-<ng-template #noProducts>
-    <div class="bg-primary text-white m-2 p-2">
-    there are no products in the repository
-    </div>
-</ng-template>
-
-<!-- Hidden Kullanarak koşulumuzu oluşturuyoruz
-hidden = true => html'de gösterilmez
-hidden = false => html'de gösterilir
--->
-<div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
-    there are {{ model.getProducts().length }} products in the repository
-</div>
-
-<div [hidden]="model.getProducts().length!=0" class="bg-primary text-white m-2 p-2">
-    there are no products in the repository
-</div>
-
