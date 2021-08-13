@@ -1,3 +1,37 @@
-<div class="bg-primary text-white m-2 p-2">
+<!-- Ürün olduğunda veya olmadığında hangi kod satırının çalışacağını
+ngIf - ngTemplate - hidden kullanarak gösterdik.-->
+
+<div *ngIf="model.getProducts().length>0; then productList else noProducts " class="bg-primary text-white m-2 p-2">
+    <!--there are {{ model.getProducts().length }} products in the repository-->
+</div>
+
+<div *ngIf="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
+    <!--there are no products in the repository-->
+</div>
+
+<!-- ng-Template bir ngIf direktifini birden çok yerde kullanmak isteğimizde else yapısıyla
+kullanabiliriz. Class özellikleri aktarılmadığı için ng tamplate içine 
+class özelliklerini ekliyoruz-->
+<ng-template #productList>
+    <div class="bg-primary text-white m-2 p-2">
+        there are {{ model.getProducts().length }} products in the repository
+    </div>
+</ng-template>
+<ng-template #noProducts>
+    <div class="bg-primary text-white m-2 p-2">
+    there are no products in the repository
+    </div>
+</ng-template>
+
+<!-- Hidden Kullanarak koşulumuzu oluşturuyoruz
+hidden = true => html'de gösterilmez
+hidden = false => html'de gösterilir
+-->
+<div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
     there are {{ model.getProducts().length }} products in the repository
 </div>
+
+<div [hidden]="model.getProducts().length!=0" class="bg-primary text-white m-2 p-2">
+    there are no products in the repository
+</div>
+
