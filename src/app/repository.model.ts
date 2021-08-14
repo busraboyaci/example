@@ -24,4 +24,12 @@ export class ProductRepository{
     getProductCount(): number{
        return this.products.length;
     }
+    addProduct(product: Product){
+        this.products.push(product);
+    }
+    //product index numarasını hesaplayıp o index numarasındaki producı splice ile siliyoruz.
+    deleteProduct(product: Product){
+        let index = this.products.indexOf(product);
+        this.products.splice(index, 1);
+    }
 }

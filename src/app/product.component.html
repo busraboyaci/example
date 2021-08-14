@@ -1,14 +1,14 @@
-<!-- ng for kullanımı
-angular.io => local veriable ile kullanabileceğimiz değerleri görebiliriz 
-ilk eleman, son eleman, tek eleman mı gibi sorular sorabiliriz-->
-<ul class="list-group m-5">
-    <li *ngFor="let product of model.getProducts(); index as i; first as isFirst; last as isLast; odd as isOdd; even as isEven" class="list-group-item">
-        {{i+1}} - {{product.name}}
-        <span *ngIf="isFirst" class="badge bg-primary"> first item</span>
-        <span *ngIf="isLast" class="badge bg-success"> last item</span>
-        <span *ngIf="isOdd" cclass="badge bg-danger"> odd item</span>
-        <span *ngIf="isEven" class="badge bg-warning"> even item</span>
+<!-- change detection: listeye ürün ekleme, silme ve güncelleme işlemleri-->
 
+<div class="m-5">
+    <button class="btn btn-primary" (click)="addProduct()">add product</button>
+<ul class="list-group mt-2">
+    <li *ngFor="let product of model.getProducts()" class="list-group-item">
+            {{product.name}}
+            <button class="btn btn-danger" (click)= "deleteProduct(product)">Delete Product</button>
+            <button class="btn btn-warning" (click)= "updateProduct(product)">Update Product</button>
 
+            
     </li>
 </ul>
+</div>
