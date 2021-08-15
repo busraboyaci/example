@@ -1,14 +1,22 @@
-<!-- change detection: listeye ürün ekleme, silme ve güncelleme işlemleri-->
+<!-- ng template ile oluşturduğumuz bir listeyi tekrar tekrar gösterme işlemi-->
+<ng-template [ngTemplateOutlet]="productList"></ng-template>
+<ng-template [ngTemplateOutlet]="productList"></ng-template>
 
-<div class="m-5">
-    <button class="btn btn-primary" (click)="addProduct()">add product</button>
-<ul class="list-group mt-2">
-    <li *ngFor="let product of model.getProducts()" class="list-group-item">
-            {{product.name}}
-            <button class="btn btn-danger" (click)= "deleteProduct(product)">Delete Product</button>
-            <button class="btn btn-warning" (click)= "updateProduct(product)">Update Product</button>
 
-            
-    </li>
-</ul>
-</div>
+
+<ng-template #productList>
+    <div class="m-5">
+        <button class="btn btn-primary" (click)="addProduct()">add product</button>
+    <ul class="list-group mt-2">
+        <li *ngFor="let product of model.getProducts()" class="list-group-item">
+                {{product.name}}
+        </li>
+    </ul>
+    </div>
+</ng-template>
+
+
+
+
+
+
