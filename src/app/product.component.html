@@ -1,14 +1,24 @@
-<!-- ng template ile oluşturduğumuz bir listeyi tekrar tekrar gösterme işlemi-->
-<ng-template [ngTemplateOutlet]="productList"></ng-template>
-<ng-template [ngTemplateOutlet]="productList"></ng-template>
+<!-- 
+**ng template ile oluşturduğumuz bir listeyi tekrar tekrar gösterme işlemi
+**Liste tipleri aynı fakat farklı sayışarda ve şekillerde listeden
+elemanları çağırmak istediğimizde -->
 
+<!-- product: .... sonra verilen dizin istenildiği gibi düzenlenebilir.
+en popüler ürünler, son eklenenler, en çok satılanlar vs -->
 
+<ng-template 
+[ngTemplateOutlet]="productList"
+[ngTemplateOutletContext]="{products: model.getProducts()}"></ng-template>
 
-<ng-template #productList>
+<ng-template 
+[ngTemplateOutlet]="productList"
+[ngTemplateOutletContext]="{products: model.getProducts()}"></ng-template>
+
+<ng-template #productList let-products="products">
     <div class="m-5">
-        <button class="btn btn-primary" (click)="addProduct()">add product</button>
+        <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
     <ul class="list-group mt-2">
-        <li *ngFor="let product of model.getProducts()" class="list-group-item">
+        <li *ngFor="let product of products;" class="list-group-item">
                 {{product.name}}
         </li>
     </ul>
