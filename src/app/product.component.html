@@ -1,30 +1,7 @@
-<!-- 
-**ng template ile oluşturduğumuz bir listeyi tekrar tekrar gösterme işlemi
-**Liste tipleri aynı fakat farklı sayışarda ve şekillerde listeden
-elemanları çağırmak istediğimizde -->
+<!-- custom drective kullanımı 
+ng ile directive oluşturuyoruz (ng g d input-email)-->
 
-<!-- product: .... sonra verilen dizin istenildiği gibi düzenlenebilir.
-en popüler ürünler, son eklenenler, en çok satılanlar vs -->
-
-<ng-template 
-[ngTemplateOutlet]="productList"
-[ngTemplateOutletContext]="{products: model.getProducts()}"></ng-template>
-
-<ng-template 
-[ngTemplateOutlet]="productList"
-[ngTemplateOutletContext]="{products: model.getProducts()}"></ng-template>
-
-<ng-template #productList let-products="products">
-    <div class="m-5">
-        <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
-    <ul class="list-group mt-2">
-        <li *ngFor="let product of products;" class="list-group-item">
-                {{product.name}}
-        </li>
-    </ul>
-    </div>
-</ng-template>
-
+<input type="text" appInputEmail>
 
 
 
