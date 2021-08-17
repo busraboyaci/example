@@ -1,4 +1,3 @@
-import { observable } from "rxjs";
 import { SimpleDataSource } from "./datasource.model";
 import { Product } from "./product.model";
 
