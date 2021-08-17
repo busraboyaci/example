@@ -8,14 +8,18 @@ import { ProductRepository } from '../repository.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent  {
-  products: Product[] = [];
-  model: ProductRepository = new ProductRepository();
-  
+  model: ProductRepository;
+  // html sayfasındaki problemi undefined diyerek çözdük. 
+  selectedProduct: string | undefined;
   constructor() { 
-    this.products = this.model.getProducts();
+    this.model = new ProductRepository();
   }
 
   ngOnInit(): void {
+  }
+  // selected edilip edilmediğini kontrol ettiğimiz method
+  getSelected(product: Product): boolean{
+    return product.name == this.selectedProduct;
   }
 
 }
