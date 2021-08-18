@@ -33,7 +33,12 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Product Name</label>
-                <input [(ngModel)]="selectedProduct">
+                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
+                istedik-->
+                <input #pName 
+                (keyup.enter)="selectedProduct=pName.value">
+                <!-- yukarıdaki satırla (input kullanıldığında)aynı işlevi görüyordu
+                    <input [(ngModel)]="selectedProduct">-->
             </div>
         </div>
     </div>
