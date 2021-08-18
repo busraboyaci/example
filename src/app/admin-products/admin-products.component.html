@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="bg-info text-white p-2">
-                Selected Product: {{selectedProduct || '(None)'}}
+                Selected Product: {{selectedProduct.name || '(None)'}}
             </div>
         <table class=" table table-sm table-bordered mt-2">
             <thead>
@@ -14,17 +14,15 @@
                     <th style="width: 150px;"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor="let product of model.getProducts()" 
-                (mouseover)="selectedProduct=product.name"
-                (mouseleave)="selectedProduct='(None)'"
+            <tbody><!-- bg-info ile seçim işlemi sağlanıyor-->
+                <tr *ngFor="let product of model.getProducts()"
                 [class.bg-info]="getSelected(product)">
                     <td>{{product.id}}</td>
                     <td><img src="assets/img/{{product.imageUrl}}" alt="" width="80"></td>
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
                     <td><button class="btn btn-danger btn-sm">Delete</button>
-                        <button class="btn btn-primary btn-sm">Update</button></td>
+                        <button (click)="editProduct(product)" class="btn btn-primary btn-sm ml-2">Edit</button></td>
                 </tr>
             </tbody>
             
@@ -32,13 +30,40 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label>Product Name</label>
+                <label>Product Name</label> <br>
                 <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
                 istedik-->
+                <!-- value inputa product ismini yazdırır-->
+                <input #pName
+                *ngIf="(selectedProduct.name)"
+                [value]="selectedProduct.name">
+            </div>
+            <div class="form-group">
+                <label>Product Id</label> <br>
+                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
+                istedik-->
+                <!-- value inputa product ismini yazdırır-->
+                <input #pId 
+                *ngIf="(selectedProduct.id)"
+                [value]="selectedProduct.id">
+            </div>
+            <div class="form-group">
+                <label>Product Description</label> <br>
+                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
+                istedik-->
+                <!-- value inputa product ismini yazdırır-->
                 <input #pName 
-                (keyup.enter)="selectedProduct=pName.value">
-                <!-- yukarıdaki satırla (input kullanıldığında)aynı işlevi görüyordu
-                    <input [(ngModel)]="selectedProduct">-->
+                *ngIf="(selectedProduct.description)"
+                [value]="selectedProduct.description">
+            </div>
+            <div class="form-group">
+                <label>Product Price</label> <br>
+                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
+                istedik-->
+                <!-- value inputa product ismini yazdırır-->
+                <input #pName 
+                *ngIf="(selectedProduct.price)"
+                [value]="selectedProduct.price">
             </div>
         </div>
     </div>

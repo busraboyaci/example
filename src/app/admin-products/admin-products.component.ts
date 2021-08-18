@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductRepository } from '../repository.model';
@@ -8,9 +9,8 @@ import { ProductRepository } from '../repository.model';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent  {
-  model: ProductRepository;
-  // html sayfasındaki problemi undefined diyerek çözdük. 
-  selectedProduct: string | undefined;
+  model: ProductRepository; 
+  selectedProduct: Product = new Product;
   constructor() { 
     this.model = new ProductRepository();
   }
@@ -19,7 +19,9 @@ export class AdminProductsComponent  {
   }
   // selected edilip edilmediğini kontrol ettiğimiz method
   getSelected(product: Product): boolean{
-    return product.name == this.selectedProduct;
+    return product == this.selectedProduct;
   }
-
+  editProduct(product: Product){
+    this.selectedProduct = product;
+  }
 }
