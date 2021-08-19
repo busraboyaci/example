@@ -34,9 +34,9 @@
                 <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
                 istedik-->
                 <!-- value inputa product ismini yazdırır-->
-                <input #pName
-                *ngIf="(selectedProduct.name)"
-                [value]="selectedProduct.name">
+                <input #pName 
+                (keyup.enter)="selectedProduct.name"
+                [(ngModel)]="selectedProduct.name">
             </div>
             <div class="form-group">
                 <label>Product Id</label> <br>
@@ -44,8 +44,7 @@
                 istedik-->
                 <!-- value inputa product ismini yazdırır-->
                 <input #pId 
-                *ngIf="(selectedProduct.id)"
-                [value]="selectedProduct.id">
+                [(ngModel)]="selectedProduct.id">
             </div>
             <div class="form-group">
                 <label>Product Description</label> <br>
@@ -53,8 +52,8 @@
                 istedik-->
                 <!-- value inputa product ismini yazdırır-->
                 <input #pName 
-                *ngIf="(selectedProduct.description)"
-                [value]="selectedProduct.description">
+                [value]="selectedProduct.description"
+                [(ngModel)]="selectedProduct.description">
             </div>
             <div class="form-group">
                 <label>Product Price</label> <br>
@@ -62,8 +61,8 @@
                 istedik-->
                 <!-- value inputa product ismini yazdırır-->
                 <input #pName 
-                *ngIf="(selectedProduct.price)"
-                [value]="selectedProduct.price">
+                
+                [(ngModel)]="selectedProduct.price">
             </div>
         </div>
     </div>
