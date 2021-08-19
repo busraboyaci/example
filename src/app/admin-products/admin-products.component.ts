@@ -10,12 +10,16 @@ import { ProductRepository } from '../repository.model';
 })
 export class AdminProductsComponent  {
   model: ProductRepository; 
-  selectedProduct: Product = new Product;
+  selectedProduct: Product;
+
   constructor() { 
     this.model = new ProductRepository();
+    this.selectedProduct = new Product;
+    
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+
   }
   // selected edilip edilmediğini kontrol ettiğimiz method
   getSelected(product: Product): boolean{
