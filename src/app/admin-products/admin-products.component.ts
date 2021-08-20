@@ -10,11 +10,11 @@ import { ProductRepository } from '../repository.model';
 })
 export class AdminProductsComponent  {
   model: ProductRepository; 
-  selectedProduct: Product;
+  selectedProduct: Product | any;
 
   constructor() { 
     this.model = new ProductRepository();
-    this.selectedProduct = new Product;
+    this.selectedProduct = new Product ;
     
   }
 
@@ -27,5 +27,13 @@ export class AdminProductsComponent  {
   }
   editProduct(product: Product){
     this.selectedProduct = product;
+  }
+  
+  saveChange(){
+    const p = this.model.getProductById(this.selectedProduct.id);
+    p.name = this.selectedProduct.name;
+    p.description = this.selectedProduct.description;
+    p.id = this.selectedProduct.id;
+    p.price = this.selectedProduct.price;
   }
 }
