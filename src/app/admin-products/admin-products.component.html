@@ -1,7 +1,7 @@
 <div class="container m-5">
     <div class="row">
         <div class="col-md-6">
-            <div class="bg-info text-white p-2">
+            <div class="bg-info text-white p-2" >
                 Selected Product: {{selectedProduct.name || '(None)'}}
             </div>
         <table class=" table table-sm table-bordered mt-2">
@@ -31,39 +31,24 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Product Name</label> <br>
-                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
-                istedik-->
-                <!-- value inputa product ismini yazdırır-->
                 <input #pName 
+                class="form-control"
                 (keyup.enter)="selectedProduct.name"
-                [(ngModel)]="selectedProduct.name">
+                [value]="selectedProduct.name">
             </div>
             <div class="form-group">
-                <label>Product Id</label> <br>
-                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
-                istedik-->
-                <!-- value inputa product ismini yazdırır-->
-                <input #pId 
-                [(ngModel)]="selectedProduct.id">
+                <label>Product Description</label>
+                <input #pDescription 
+                class="form-control"
+                [value]="selectedProduct.description">
             </div>
             <div class="form-group">
-                <label>Product Description</label> <br>
-                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
-                istedik-->
-                <!-- value inputa product ismini yazdırır-->
-                <input #pName 
-                [value]="selectedProduct.description"
-                [(ngModel)]="selectedProduct.description">
+                <label>Product Image</label>
+                <input #pImage
+                class="form-control"
+                [value]="selectedProduct.imageUrl">
             </div>
-            <div class="form-group">
-                <label>Product Price</label> <br>
-                <!-- keyup ile enter kontrolünden sonra arama yapmak ve server için yük oluşturmamak
-                istedik-->
-                <!-- value inputa product ismini yazdırır-->
-                <input #pName 
-                
-                [(ngModel)]="selectedProduct.price">
-            </div>
+            <button class="btn btn-primary m-2" (click)="selectedProduct.name=pName.value; selectedProduct.description=pDescription.value; selectedProduct.imageUrl=pImage.value;">save change</button>
         </div>
     </div>
 </div>
