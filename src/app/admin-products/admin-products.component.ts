@@ -14,7 +14,7 @@ export class AdminProductsComponent  {
 
   constructor() { 
     this.model = new ProductRepository();
-    this.selectedProduct = new Product ;
+    this.selectedProduct = new Product();
     
   }
 

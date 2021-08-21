@@ -9,10 +9,17 @@ import { ProductRepository } from "./repository.model";
 })
 
 export class ProductComponent {
-// Kendi pipe'larımızı oluşturarak özel işlemlerimizi kolaylaştırabiliriz.
-text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
-   
+    model: ProductRepository = new ProductRepository();
+    newProduct: Product = new Product();
 
-
+    // new product'ı json formatına dönüştürüyoruz
+    get jsonProduct() {
+        return JSON.stringify(this.newProduct);
+    }
+    // ürün eklediğimiz metodu oluşturuyoruz
+    
+    addProduct(p: Product){
+        console.log("new product: "+ this.jsonProduct);
+    }
 
     }
