@@ -16,18 +16,36 @@
             ngModel
             #name="ngModel"
             (change)="log(name)">
+            <!-- ngIf veya hidden properties kullanarak kontrol sağlayabiliriz-->
+            <div class="alert alert-danger" *ngIf="!name.value && name.touched">
+                name is requared 
+            </div>
         </div>
         <div class="form-group">
             <label>Product Description</label>
             <input 
             class="form-control"
-            [(ngModel)]="newProduct.description">
+            required
+            [(ngModel)]="newProduct.description"
+            name="pDescription"
+            #description="ngModel"
+            (change)="log(name)">
+            <div class="alert alert-danger" *ngIf="!description.value && description.touched">
+                Description is requared 
+            </div>
         </div>
         <div class="form-group">
             <label>Product Image</label>
             <input
             class="form-control"
-            [(ngModel)]="newProduct.imageUrl">
+            required
+            [(ngModel)]="newProduct.imageUrl"
+            name="pImage"
+            #imageUrl="ngModel"
+            (change)="log(name)">
+            <div class="alert alert-danger" *ngIf="!imageUrl.value && imageUrl.touched">
+                Image is requared 
+            </div>
         </div>
         <button class="btn btn-primary m-2" (click)="addProduct(newProduct)">save change</button>
     </div>
