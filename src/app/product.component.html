@@ -9,7 +9,13 @@
             <label>Product Name</label> <br>
             <input
             class="form-control"
-            [(ngModel)]="newProduct.name">
+            required
+            [(ngModel)]="newProduct.name"
+            type="text"
+            name="pName"
+            ngModel
+            #name="ngModel"
+            (change)="log(name)">
         </div>
         <div class="form-group">
             <label>Product Description</label>

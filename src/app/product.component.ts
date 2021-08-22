@@ -21,5 +21,8 @@ export class ProductComponent {
     addProduct(p: Product){
         console.log("new product: "+ this.jsonProduct);
     }
+    log(m:any){
+        console.log(m);
+    }
 
     }
