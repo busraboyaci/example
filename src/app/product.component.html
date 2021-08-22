@@ -10,17 +10,19 @@
             <input
             class="form-control"
             required 
+            minlength="3"
             pattern="[^0-9]"
             [(ngModel)]="newProduct.name"
             type="text"
-            name="pName"
+            name="name"
             ngModel
             #name="ngModel"
             (change)="log(name)">
             <!-- ngIf veya hidden properties kullanarak kontrol sağlayabiliriz-->
             <div class="alert alert-danger" *ngIf="!name.value && name.touched">
-               <p *ngIf="name.hasError('required')">name is requared</p>
-               <p *ngIf="name.hasError('pattern')">only letters can be</p>
+                <p *ngFor="let error of getValidationErrors(name)">
+                    {{ error }}
+                </p>
             </div>
         </div>
         <div class="form-group">
