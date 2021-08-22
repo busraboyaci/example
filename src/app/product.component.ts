@@ -24,5 +24,27 @@ export class ProductComponent {
     log(m:any){
         console.log(m);
     }
+// validation mesajını metod aracılığıyla hazırladık ancak requared dışındaki özellikler çalışmıyor
+    getValidationErrors(state: any){
+        let ctrlName: string = state.name;
+        let messages: string[] = [];
+
+        if(state.errors){
+            for(let errorName in state.errors){
+                switch(errorName){
+                    case "required":
+                        messages.push(`You must enter a`+ (ctrlName));
+                        break;
+                    case "minlength":
+                        messages.push(`min 3 char`+ (ctrlName));
+                        break;
+                    case "pattern":
+                        messages.push(`only letters`+ (ctrlName));
+                        break;
+                }
+            }
+        }
+        return messages;
+    }
 
     }
