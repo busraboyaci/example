@@ -7,7 +7,6 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { CommonModule } from '@angular/common';
 
 
-
 @NgModule({
   declarations: [
     ProductComponent,
