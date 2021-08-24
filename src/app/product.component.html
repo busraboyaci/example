@@ -5,6 +5,9 @@
 <div class="container">
 <div class="row">
     <form #form="ngForm" (ngSubmit)="ngSubmit(form)">
+        <div class="bg-danger text-white p-3 my-2" *ngIf="formSubmited && form.invalid">
+            bir hata oluştu bilgilerinizi kontrol ediniz
+        </div>
     <div class="col-md-6">
         <div class="form-group">
             <label>Product Name</label> <br>
@@ -20,7 +23,7 @@
             #name="ngModel"
             (change)="log(name)">
             <!-- ngIf veya hidden properties kullanarak kontrol sağlayabiliriz-->
-            <div class="alert alert-danger" *ngIf="!name.value && name.touched">
+            <div class="alert alert-danger" *ngIf="(formSubmited && name.dirty) && name.invalid">
                 <p *ngFor="let error of getValidationErrors(name)">
                     {{ error }}
                 </p>

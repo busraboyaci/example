@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Product } from "./product.model";
 import { ProductRepository } from "./repository.model";
 
@@ -12,6 +13,8 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     newProduct: Product = new Product();
 
+    // form bilgisini tutan bir değişken tanımlıyoruz. 
+    formSubmited: boolean = false
     // new product'ı json formatına dönüştürüyoruz
     get jsonProduct() {
         return JSON.stringify(this.newProduct);
@@ -46,8 +49,15 @@ export class ProductComponent {
         }
         return messages;
     }
-    ngSubmit(form: any){
+    ngSubmit(form: NgForm){
         console.log(form);
+        this.formSubmited = true;
+        if(form.valid){
+            this.addProduct(this.newProduct);
+            this.newProduct = new Product();
+            form.reset();
+            this.formSubmited =false;
+        }
     }
 
     }
