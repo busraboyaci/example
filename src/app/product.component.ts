@@ -46,5 +46,8 @@ export class ProductComponent {
         }
         return messages;
     }
+    ngSubmit(form: any){
+        console.log(form);
+    }
 
     }

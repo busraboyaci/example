@@ -4,6 +4,7 @@
 
 <div class="container">
 <div class="row">
+    <form #form="ngForm" (ngSubmit)="ngSubmit(form)">
     <div class="col-md-6">
         <div class="form-group">
             <label>Product Name</label> <br>
@@ -57,7 +58,8 @@
                 Image is requared 
             </div>
         </div>
-        <button class="btn btn-primary m-2" (click)="addProduct(newProduct)">save change</button>
+        <button type="submit" class="btn btn-primary m-2" >submit</button>
     </div>
+</form>
 </div>
 </div>
